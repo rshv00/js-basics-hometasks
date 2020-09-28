@@ -78,23 +78,23 @@
             border-bottom: 1px dashed gray;
         }
 
-        .nav-list-item > a {
+        .nav-list-item > .hyperlink {
             display: flex;
             flex-direction: row;
             filter: invert(86%) sepia(4%) saturate(40%) hue-rotate(313deg) brightness(100%) contrast(90%);
         }
 
-        .nav-list-item > a > img {
+        .nav-list-item > .hyperlink > .nav-icon {
             width: 20px;
             height: 20px;
             margin-right: 20px;
         }
 
-        .nav-list-item > a:hover {
+        .nav-list-item > .hyperlink:hover {
             filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(330deg) brightness(105%) contrast(101%);
         }
 
-        .nav-list-item > a.selected {
+        .nav-list-item > .selected {
             filter: invert(82%) sepia(39%) saturate(486%) hue-rotate(63deg) brightness(107%) contrast(97%);
         }
 
@@ -123,48 +123,6 @@
         </div>
         <nav class="navbar">
             <ul class="navbar-list">
-                <li class="nav-list-item">
-                    <a class="about-me selected" href="about.html">
-                        <img src="assets/nav/user.svg" alt="User">
-                        <p>About me</p>
-                    </a>
-                </li>
-                <li class="nav-list-item">
-                    <a class="education" href="education.html">
-                        <img src="assets/nav/graduation-cap.svg" alt="Graduation cap">
-                        <p>Education</p>
-                    </a>
-                </li>
-                <li class="nav-list-item">
-                    <a class="about-me" href="#">
-                        <img src="assets/nav/pencil.svg" alt="Pencil">
-                        <p>Experience</p>
-                    </a>
-                </li>
-                <li class="nav-list-item">
-                    <a class="skills" href="#">
-                        <img src="assets/nav/diamond.svg" alt="Diamond">
-                        <p>Skills</p>
-                    </a>
-                </li>
-                <li class="nav-list-item">
-                    <a class="portfolio" href="#">
-                        <img src="assets/nav/suitcase.svg" alt="Suitcase">
-                        <p>Portfolio</p>
-                    </a>
-                </li>
-                <li class="nav-list-item">
-                    <a class="contacts" href="#">
-                        <img src="assets/nav/cursor.svg" alt="Cursor">
-                        <p>Contacts</p>
-                    </a>
-                </li>
-                <li class="nav-list-item">
-                    <a class="feedbacks" href="#">
-                        <img src="assets/nav/chat.svg" alt="Chat">
-                        <p>Feedbacks</p>
-                    </a>
-                </li>
             </ul>
         </nav>
         <div class="go-back-elem">
@@ -175,5 +133,98 @@
         <img class="toggle-btn" src="assets/toggle-icon.svg" alt="Toggle">
     </div>
 </div>
+
+<template id="li-templ">
+    <li class="nav-list-item">
+        <a class="hyperlink" href="#">
+            <img class="nav-icon">
+            <p class="nav-item-text"></p>
+        </a>
+    </li>
+</template>
+<script>
+    const navItems = [
+        {
+            "id": 0,
+            "icon": "assets/nav/user.svg",
+            "alt": "User icon",
+            "text": "About me",
+        },
+        {
+            "id": 1,
+            "icon": "assets/nav/graduation-cap.svg",
+            "alt": "Graduation cap",
+            "text": "Education"
+        },
+        {
+            "id": 2,
+            "icon": "assets/nav/pencil.svg",
+            "alt": "Pencil",
+            "text": "Experience"
+        },
+        {
+            "id": 3,
+            "icon": "assets/nav/diamond.svg",
+            "alt": "Diamond",
+            "text": "Skills"
+        },
+        {
+            "id": 4,
+            "icon": "assets/nav/suitcase.svg",
+            "alt": "Suitcase",
+            "text": "Portfolio"
+        },
+        {
+            "id": 5,
+            "icon": "assets/nav/cursor.svg",
+            "alt": "Cursor",
+            "text": "Contacts"
+        },
+        {
+            "id": 6,
+            "icon": "assets/nav/chat.svg",
+            "alt": "Chat",
+            "text": "Feedbacks"
+        }
+    ];
+
+    const outputBlock = document.querySelector('.navbar-list');
+
+    for (const navItem of navItems) {
+        const template = document.importNode(document.getElementById('li-templ').content, true);
+        template.querySelector('.nav-icon').src = navItem.icon;
+        template.querySelector('.nav-icon').alt = navItem.alt;
+        template.querySelector('.nav-item-text').innerText = navItem.text;
+        outputBlock.appendChild(template);
+    }
+
+    outputBlock.addEventListener('click', (e) => {
+        const target = e.target;
+        if (hasAnyClass(target, 'nav-item-text', 'nav-icon', 'hyperlink')) {
+            removeSelectedClassTag();
+            if (target.tagName !== 'A') {
+                target.parentNode.classList.add('selected');
+            } else {
+                target.classList.add('selected');
+            }
+        }
+    });
+
+    function removeSelectedClassTag() {
+        let selectedElem = outputBlock.querySelector('.selected');
+        if (selectedElem) {
+            selectedElem.classList.remove('selected');
+        }
+    }
+
+    /**
+     * checks whether an element contains any of given classes
+     * @param {Element} elem the element under examination
+     * @param {string[]} classNames list of classes
+     */
+    function hasAnyClass(elem, ...classNames) {
+        return classNames.some((className) => elem.classList.contains(className));
+    }
+</script>
 </body>
 </html>
