@@ -126,7 +126,9 @@
             </ul>
         </nav>
         <div class="go-back-elem">
-            <a class="go-back-link" href="front-page.html"><b><</b> Go back</a>
+            <a class="go-back-link" href="front-page.html">
+                <span id="back-arrow">< Go back</span>
+            </a>
         </div>
     </div>
     <div class="toggle">
@@ -135,8 +137,8 @@
 </div>
 
 <template id="li-templ">
-    <li class="nav-list-item">
-        <a class="hyperlink" href="#">
+    <li class="nav-list-item" onclick="makeItemSelected()">
+        <a class="hyperlink">
             <img class="nav-icon">
             <p class="nav-item-text"></p>
         </a>
@@ -149,42 +151,49 @@
             "icon": "assets/nav/user.svg",
             "alt": "User icon",
             "text": "About me",
+            "href": "about.html"
         },
         {
             "id": 1,
             "icon": "assets/nav/graduation-cap.svg",
             "alt": "Graduation cap",
-            "text": "Education"
+            "text": "Education",
+            "href": "education.html"
         },
         {
             "id": 2,
             "icon": "assets/nav/pencil.svg",
             "alt": "Pencil",
-            "text": "Experience"
+            "text": "Experience",
+            "href": "#"
         },
         {
             "id": 3,
             "icon": "assets/nav/diamond.svg",
             "alt": "Diamond",
-            "text": "Skills"
+            "text": "Skills",
+            "href": "#"
         },
         {
             "id": 4,
             "icon": "assets/nav/suitcase.svg",
             "alt": "Suitcase",
-            "text": "Portfolio"
+            "text": "Portfolio",
+            "href": "#"
         },
         {
             "id": 5,
             "icon": "assets/nav/cursor.svg",
             "alt": "Cursor",
-            "text": "Contacts"
+            "text": "Contacts",
+            "href": "#"
         },
         {
             "id": 6,
             "icon": "assets/nav/chat.svg",
             "alt": "Chat",
-            "text": "Feedbacks"
+            "text": "Feedbacks",
+            "href": "#"
         }
     ];
 
@@ -192,38 +201,33 @@
 
     for (const navItem of navItems) {
         const template = document.importNode(document.getElementById('li-templ').content, true);
+        template.querySelector('.hyperlink').href = navItem.href;
         template.querySelector('.nav-icon').src = navItem.icon;
         template.querySelector('.nav-icon').alt = navItem.alt;
         template.querySelector('.nav-item-text').innerText = navItem.text;
+        template.querySelector('.hyperlink').onclick = makeItemSelected;
         outputBlock.appendChild(template);
     }
 
-    outputBlock.addEventListener('click', (e) => {
+    function makeItemSelected(e) {
         const target = e.target;
-        if (hasAnyClass(target, 'nav-item-text', 'nav-icon', 'hyperlink')) {
-            removeSelectedClassTag();
-            if (target.tagName !== 'A') {
-                target.parentNode.classList.add('selected');
-            } else {
-                target.classList.add('selected');
-            }
-        }
-    });
-
-    function removeSelectedClassTag() {
-        let selectedElem = outputBlock.querySelector('.selected');
-        if (selectedElem) {
-            selectedElem.classList.remove('selected');
+        removeClassSelected(outputBlock);
+        if (target.tagName === 'a') {
+            target.classList.add('selected');
+        } else {
+            target.parentNode.classList.add('selected');
         }
     }
 
     /**
-     * checks whether an element contains any of given classes
-     * @param {Element} elem the element under examination
-     * @param {string[]} classNames list of classes
+     * remove class selected from an element or its ancestor
+     * @param {Element} element given element
      */
-    function hasAnyClass(elem, ...classNames) {
-        return classNames.some((className) => elem.classList.contains(className));
+    function removeClassSelected(element) {
+        let selectedElem = element.querySelector('.selected');
+        if (selectedElem) {
+            selectedElem.classList.remove('selected');
+        }
     }
 </script>
 </body>

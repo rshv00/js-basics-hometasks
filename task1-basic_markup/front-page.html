@@ -25,15 +25,21 @@
             text-decoration: none;
         }
 
-        .container {
+        .bg-image {
             background-image: url("assets/background_image.jpeg");
+            filter: blur(4px) opacity(.9);
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            display: flex;
-            height: 100vh;
-            justify-content: center;
-            align-items: center;
+            min-height: 100vh;
+        }
+
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
         }
 
         .center-block {
@@ -83,17 +89,39 @@
         .know-more:hover {
             background-color: #29AB87;
         }
+
+        @media only screen and (max-width: 550px) {
+            .profile-photo {
+                width: 130px;
+                height: 130px;
+            }
+
+            .name {
+                font-size: 24px;
+            }
+
+            .bio {
+                font-size: 24px;
+            }
+
+            .detail-info {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="center-block">
-        <img class="profile-photo" src="assets/profile_photo.jpg" alt="Profile photo">
-        <span class="name">John Doe</span>
-        <span class="bio">Programmer. Creative. Innovator</span>
-        <span class="detail-info">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    <div class="bg-image"></div>
+    <div class="content">
+        <div class="center-block">
+            <img class="profile-photo" src="assets/profile_photo.jpg" alt="Profile photo">
+            <span class="name">John Doe</span>
+            <span class="bio">Programmer. Creative. Innovator</span>
+            <span class="detail-info">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</span>
-        <a class="know-more" href="side-nav.html">Know more</a>
+            <a class="know-more" href="side-nav.html">Know more</a>
+        </div>
     </div>
 </div>
 </body>
