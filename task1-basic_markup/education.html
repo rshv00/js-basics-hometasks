@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Education</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            max-width: 900px;
+        }
+
+        .content {
+            margin-top: 40px;
+        }
+
+        a {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        h3 {
+            color: #29AB87;
+            margin-bottom: 30px;
+        }
+
+        .education-box {
+            height: 300px;
+            width: calc(100% - 40px);
+            display: flex;
+            flex-direction: column;
+            overflow: scroll;
+            overflow-x: hidden;
+        }
+
+        .timeline-item {
+            display: flex;
+            flex-direction: row;
+            margin-left: 15px;
+        }
+
+        .timeline-left {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .vertical-line.first {
+            height: 15px;
+            width: 2px;
+            border: none;
+            background-image: linear-gradient(to bottom, rgba(30, 130, 76, 0) 10%, rgba(30, 130, 76, 1));
+        }
+
+        .vertical-line.last {
+            width: 2px;
+            border: none;
+            background-image: linear-gradient(to top, rgba(30, 130, 76, 0) 5%, rgba(30, 130, 76, 1));
+        }
+
+        .vertical-line {
+            height: 90%;
+            border-left: 2px solid #29ab87;
+        }
+
+        .item-content:before {
+            position: absolute;
+            content: "";
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 7px 14px 7px 0;
+            border-color: transparent lightgray transparent transparent;
+            left: -14px;
+        }
+
+        .item-content {
+            position: relative;
+            background-color: #D3D3D3;
+            padding: 8px;
+            margin: 0 17px 15px 45px;
+            box-shadow: 0 2px 2px -2px #333;
+        }
+
+        .year {
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <h3>Education</h3>
+    <div class="education-box">
+    </div>
+</div>
+
+<template id="timeline-item-templ">
+    <div class="timeline-item">
+        <div class="timeline-left">
+            <p class="year"></p>
+            <div class="vertical-line"></div>
+
+        </div>
+        <div class="item-content">
+            <p class="timeline-text"></p>
+        </div>
+    </div>
+</template>
+<script>
+    const timelineItems = [
+        {
+            "id": 0,
+            "year": "2009",
+            "itemContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore" +
+                "et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut" +
+                "aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse" +
+                "cillum dolore eu fugiat nulla pariatur.",
+        }, {
+            "id": 1,
+            "year": "2013",
+            "itemContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore" +
+                "et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut" +
+                "aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse" +
+                "cillum dolore eu fugiat nulla pariatur.",
+        }, {
+            "id": 2,
+            "year": "2014",
+            "itemContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore" +
+                "et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut" +
+                "aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse" +
+                "cillum dolore eu fugiat nulla pariatur.",
+        }, {
+            "id": 3,
+            "year": "2017",
+            "itemContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore" +
+                "et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut" +
+                "aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse" +
+                "cillum dolore eu fugiat nulla pariatur.",
+        }, {
+            "id": 4,
+            "year": "2019",
+            "itemContent": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore" +
+                "et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut" +
+                "aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse" +
+                "cillum dolore eu fugiat nulla pariatur.",
+        }, {
+            "id": 5,
+            "year": "2020",
+            "itemContent": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium " +
+                "voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate " +
+                "non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga." +
+                " Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi " +
+                "optio cumque nihil impedit quo minus.",
+        },
+    ];
+
+    const outputBlock = document.querySelector('.education-box');
+
+    for (const timelineItem of timelineItems) {
+        const template = document.importNode(document.getElementById('timeline-item-templ').content, true);
+        template.querySelector('.year').innerText = timelineItem.year;
+        template.querySelector('.timeline-text').innerText = timelineItem.itemContent;
+        outputBlock.appendChild(template);
+    }
+
+    addFirstAndLastLineToTimelineLeft();
+
+    function addFirstAndLastLineToTimelineLeft() {
+        let timelineLeftNodes = outputBlock.querySelectorAll('.timeline-left');
+        let divElement = createElement('div', 'vertical-line', 'first');
+        timelineLeftNodes[0].prepend(divElement);
+
+        let verticalLineNodes = outputBlock.querySelectorAll('.vertical-line');
+        verticalLineNodes[verticalLineNodes.length - 1].classList.add('last');
+    }
+
+    /**
+     * @param {string} elementType name of an element, e.g. a, div
+     * @param {string[]} classes append classes to an element
+     */
+    function createElement(elementType, ...classes) {
+        let divElement = document.createElement(elementType);
+        classes.forEach((cl) => divElement.classList.add(cl));
+        return divElement;
+    }
+</script>
+</body>
+</html>
