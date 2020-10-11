@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Experience</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+        }
+
+        a {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        .divider-line {
+            border-style: none;
+            border-top: 2px dotted #29AB87;
+        }
+
+        .container {
+            margin-left: 15px;
+            width: 90%;
+            max-width: 900px;
+        }
+
+        .header {
+            margin-top: 40px;
+            color: #29AB87;
+        }
+
+        .item {
+            display: flex;
+            flex-direction: row;
+            list-style-type: none;
+            padding: 20px 0;
+        }
+
+        .job-place, .job-title {
+            font-weight: 600;
+        }
+
+        .period, .job-description {
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        .left-info {
+            min-width: 15%;
+        }
+
+        @media screen and (max-width: 550px) {
+            body {
+                font-size: 12px;
+            }
+
+            .period, .job-description {
+                font-size: 10px;
+            }
+
+            .left-info {
+                min-width: 25%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h3>Experience</h3>
+    </div>
+    <div class="content">
+        <ul class="experience-list">
+        </ul>
+    </div>
+</div>
+<template id="li-templ">
+    <li class="item">
+        <div class="left-info">
+            <div class="job-place"></div>
+            <div class="period"></div>
+        </div>
+        <div class="right-info">
+            <div class="job-title"></div>
+            <div class="job-description"></div>
+        </div>
+    </li>
+</template>
+<script>
+    const items = [
+        {
+            "id": 0,
+            "job_place": "Google",
+            "period": "2013-2014",
+            "job_title": "Front-end developer / Angular programmer",
+            "job_description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate dignissimos dolorum exercitationem minus molestiae nulla perferendis, quam quisquam quod repellat tempora tenetur vitae? A asperiores consectetur incidunt omnis quasi soluta?"
+        }, {
+            "id": 1,
+            "job_place": "Twitter",
+            "period": "2012",
+            "job_title": "Web developer",
+            "job_description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate dignissimos."
+        }, {
+            "id": 2,
+            "job_place": "Twitter",
+            "period": "2012",
+            "job_title": "Web developer",
+            "job_description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate dignissimos."
+        }, {
+            "id": 3,
+            "job_place": "Twitter",
+            "period": "2012",
+            "job_title": "Web developer",
+            "job_description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate dignissimos."
+        }
+    ];
+    const outputBlock = document.querySelector(".experience-list");
+    for (const item of items) {
+        const template = document.importNode(document.getElementById('li-templ').content, true);
+        template.querySelector('.job-place').innerText = item.job_place;
+        template.querySelector('.period').innerText = item.period;
+        template.querySelector('.job-title').innerText = item.job_title;
+        template.querySelector('.job-description').innerText = item.job_description;
+        outputBlock.appendChild(template);
+    }
+
+    addDottedLines();
+
+    function addDottedLines() {
+        let items = document.querySelectorAll('.item');
+        for (let i = 0; i < items.length - 1; i++) {
+            let hr = document.createElement('hr');
+            hr.classList.add('divider-line');
+            items[i].insertAdjacentElement('afterend', hr);
+        }
+    }
+</script>
+</body>
+</html>

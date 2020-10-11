@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Contacts</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+      }
+
+      a {
+        color: #000000;
+        text-decoration: none;
+      }
+
+      .container {
+        margin-left: 15px;
+        width: 90%;
+        margin: auto;
+        max-width: 900px;
+      }
+
+      .header {
+        color: #29ab87;
+        margin: 30px 0;
+      }
+
+      .item {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .item-icon-container {
+        border-right: 1px solid #ebebeb;
+        border-bottom: 1px solid #ebebeb;
+        padding: 10px;
+      }
+
+      .item > .icon:last-of-type {
+        border-bottom: none;
+      }
+
+      .item-icon {
+        width: 30px;
+        height: 30px;
+      }
+
+      .item-icon[alt] {
+        font-size: 12px;
+      }
+
+      .contact-content {
+        margin: auto 40px auto 10px;
+        font-weight: 600;
+      }
+
+      .link {
+        font-size: 14px;
+        font-weight: 300;
+      }
+
+      .link:hover {
+        color: #29ab87;
+      }
+
+      @media only screen and (max-width: 550px) {
+        body {
+          font-size: 12px;
+        }
+
+        .link {
+          font-size: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h3>Contacts</h3>
+      </div>
+      <div class="content">
+        <div class="item">
+          <div class="item-icon-container">
+            <img
+              src="assets/contacts/phone.svg"
+              alt="Phone"
+              class="item-icon"
+            />
+          </div>
+          <div class="contact-content">
+            <a href="tel:500345242">500 345 242</a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-icon-container">
+            <img src="assets/contacts/email.svg" alt="Mail" class="item-icon" />
+          </div>
+          <div class="contact-content">
+            <a href="mailto:office@kamsolutions.pl">office@kamsolutions.pl</a>
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-icon-container">
+            <img
+              src="assets/contacts/twitter.svg"
+              alt="Twitter"
+              class="item-icon"
+            />
+          </div>
+          <div class="contact-content">
+            <p>Twitter</p>
+            <a class="link" target="_blank" href="https://twitter.com/wordpress"
+              >https://twitter.com/wordpress</a
+            >
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-icon-container">
+            <img
+              src="assets/contacts/facebook.svg"
+              alt="Facebook"
+              class="item-icon"
+            />
+          </div>
+          <div class="contact-content">
+            <p>Facebook</p>
+            <a class="link" target="_blank" href="https://facebook.com/facebook"
+              >https://facebook.com/facebook</a
+            >
+          </div>
+        </div>
+        <div class="item">
+          <div class="item-icon-container last">
+            <img
+              src="assets/contacts/skype.svg"
+              alt="Skype"
+              class="item-icon"
+            />
+          </div>
+          <div class="contact-content">
+            <p>Skype</p>
+            <a class="link" href="callto:kamsolutions.pl">kamsolutions.pl</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
