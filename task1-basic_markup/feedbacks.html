@@ -18,12 +18,15 @@
             font-family: 'Open Sans', sans-serif;
             font-weight: 400;
             font-size: 18px;
-            max-width: 900px;
         }
 
         a {
             color: #000000;
             text-decoration: none;
+        }
+
+        .container {
+            max-width: 900px;
         }
 
         .header {
@@ -44,7 +47,7 @@
             margin-top: 25px;
         }
 
-        .author {
+        .feedback-author {
             position: absolute;
             top: 95%;
             display: flex;
@@ -52,13 +55,13 @@
             align-items: center;
         }
 
-        .about-author {
+        .feedback-author-about {
             font-size: 14px;
             font-weight: 400;
             display: inline;
         }
 
-        .about-author span:first-child {
+        .feedback-author-about span:first-child {
             margin-left: 4px;
         }
 
@@ -68,13 +71,13 @@
             border-radius: 2px;
         }
 
-        .photo > .author-img {
+        .feedback-author-photo > .feedback-author-photo__img {
             width: 40px;
             height: 40px;
             border-radius: 50%;
         }
 
-        .website-link {
+        .feedback-author-about__website {
             color: #29AB87;
         }
 
@@ -83,7 +86,7 @@
                 font-size: 12px;
             }
 
-            .about-author {
+            feedback-author-about {
                 font-size: 10px;
             }
         }
@@ -100,13 +103,13 @@
 <template id="li-templ">
     <li class="feedback-item">
         <p class="feedback-content"></p>
-        <div class="author">
-            <div class="photo">
-                <img src="" alt="" class="author-img">
+        <div class="feedback-author">
+            <div class="feedback-author-photo">
+                <img src="" alt="" class="feedback-author-photo__img">
             </div>
-            <div class="about-author">
-                <span class="author-name author-occupation"></span>
-                <a class="website-link" target="_blank"></a>
+            <div class="feedback-author-about">
+                <span class="feedback-author-about__name feedback-author-about__occupation"></span>
+                <a class="feedback-author-about__website" target="_blank"></a>
             </div>
         </div>
     </li>
@@ -133,11 +136,11 @@
     for (const feedback of feedbacks) {
         const template = document.importNode(document.getElementById('li-templ').content, true);
         template.querySelector('.feedback-content').innerText = feedback.content;
-        template.querySelector('.author-img').src = feedback.author_pic;
-        template.querySelector('.author-name').innerText = feedback.author;
-        template.querySelector('.author-occupation').innerText += ' ' + feedback.occupation + ',';
-        template.querySelector('.website-link').text = '' + feedback.site_link.replace(/^https?:\/\//, '');
-        template.querySelector('.website-link').href = '' + feedback.site_link;
+        template.querySelector('.feedback-author-photo__img').src = feedback.author_pic;
+        template.querySelector('.feedback-author-about__name').innerText = feedback.author;
+        template.querySelector('.feedback-author-about__occupation').innerText += ' ' + feedback.occupation + ',';
+        template.querySelector('.feedback-author-about__website').text = '' + feedback.site_link.replace(/^https?:\/\//, '');
+        template.querySelector('.feedback-author-about__website').href = '' + feedback.site_link;
         outputBlock.appendChild(template);
     }
 </script>

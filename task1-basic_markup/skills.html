@@ -1,196 +1,213 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
     <title>Skills</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
+      body {
+        font-family: "Open Sans", sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+      }
+
+      a {
+        color: #000000;
+        text-decoration: none;
+      }
+
+      button {
+        border-style: none;
+      }
+
+      .container {
+        position: relative;
+        margin: 30px 40px 0 20px;
+        max-width: 900px;
+      }
+
+      .header {
+        color: #29ab87;
+        margin-bottom: 30px;
+      }
+
+      .skill {
+        margin: 3px 0;
+        padding: 4px;
+        background-color: #29ab87;
+        color: #ffffff;
+        font-weight: 300;
+        font-size: 14px;
+      }
+
+      .edit {
+        position: absolute;
+        right: 0;
+        top: 7%;
+        color: #ffffff;
+        background-color: #000000;
+        padding: 6px 12px;
+        border-radius: 3px;
+        user-select: none;
+      }
+
+      .edit:hover,
+      .edit-icon:hover {
+        background-color: #29ab87;
+        cursor: pointer;
+      }
+
+      .edit-icon {
+        width: 15px;
+        height: 15px;
+      }
+
+      .skill-level-line {
+        margin-top: 14px;
+        border: 1px solid #e8e8e8;
+      }
+
+      .level-info {
+        position: relative;
+      }
+
+      .vertical-line {
+        position: absolute;
+        height: 7px;
+        border-left: 2px solid #e8e8e8;
+      }
+
+      .skill-description {
+        position: absolute;
+        font-size: 12px;
+        color: #e8e8e8;
+      }
+
+      .level-info .skill-description:first-of-type {
+        right: 0;
+        left: auto !important;
+      }
+
+      @media screen and (max-width: 550px) {
         body {
-            font-family: 'Open Sans', sans-serif;
-            font-weight: 400;
-            font-size: 18px;
-            max-width: 900px;
-        }
-
-        a {
-            color: #000000;
-            text-decoration: none;
-        }
-
-        button {
-            border-style: none;
-        }
-
-        .container {
-            position: relative;
-            margin: 30px 40px 0 20px;
-        }
-
-        .header {
-            color: #29AB87;
-            margin-bottom: 30px;
-        }
-
-        .skill {
-            margin: 3px 0;
-            padding: 4px;
-            background-color: #29AB87;
-            color: #FFFFFF;
-            font-weight: 300;
-            font-size: 14px;
-        }
-
-        .edit {
-            position: absolute;
-            right: 0;
-            top: 7%;
-            color: #FFFFFF;
-            background-color: #000000;
-            padding: 6px 12px;
-            border-radius: 3px;
-        }
-
-        .edit:hover, .edit-icon:hover {
-            background-color: #29AB87;
-        }
-
-        .edit-icon {
-            width: 15px;
-            height: 15px;
-        }
-
-        .skill-level-line {
-            margin-top: 14px;
-            border: 1px solid #E8E8E8;
-        }
-
-        .level-info {
-            position: relative;
-        }
-
-        .vertical-line {
-            position: absolute;
-            height: 7px;
-            border-left: 2px solid #E8E8E8;
+          font-size: 12px;
         }
 
         .skill-description {
-            position: absolute;
-            font-size: 12px;
-            color: #E8E8E8;
+          font-size: 10px;
         }
-
-        .level-info .skill-description:first-of-type {
-            right: 0;
-            left: auto !important;
-        }
-
-        @media screen and (max-width: 550px) {
-            body {
-                font-size: 12px;
-            }
-
-            .skill-description {
-                font-size: 10px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
-<div class="container">
-    <div class="header">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
         <h3>Skills</h3>
-    </div>
-    <button class="edit"><img class="edit-icon" src="assets/skills/edit.svg" alt="Edit">Open edit</button>
-    <div class="content">
+      </div>
+      <button class="edit">
+        <img class="edit-icon" src="assets/skills/edit.svg" alt="Edit" />Open
+        edit
+      </button>
+      <div class="content">
         <ul class="skills-list"></ul>
         <div class="level-info">
-            <hr class="skill-level-line">
+          <hr class="skill-level-line" />
         </div>
+      </div>
     </div>
-</div>
-<template id="li-templ">
-    <div class="skill">
+    <template id="li-templ">
+      <div class="skill">
         <span class="skill-name"></span>
-    </div>
-</template>
-<script>
-    const skills = [
+      </div>
+    </template>
+    <script>
+      const skills = [
         {
-            "id": 0,
-            "skill_name": "HTML",
-            "skill_range": 10
-        }, {
-            "id": 1,
-            "skill_name": "CSS",
-            "skill_range": 5
-        }, {
-            "id": 2,
-            "skill_name": "jQuery",
-            "skill_range": 1
-        }, {
-            "id": 3,
-            "skill_name": "Angular",
-            "skill_range": 7
+          id: 0,
+          skill_name: "HTML",
+          skill_range: 10,
         },
-    ];
-    const outputBlock = document.querySelector('.skills-list');
-    for (const skill of skills) {
-        const template = document.importNode(document.getElementById('li-templ').content, true);
-        template.querySelector('.skill-name').innerText = skill.skill_name;
-        template.querySelector('.skill').style.maxWidth = 10 * skill.skill_range + '%';
+        {
+          id: 1,
+          skill_name: "CSS",
+          skill_range: 5,
+        },
+        {
+          id: 2,
+          skill_name: "jQuery",
+          skill_range: 1,
+        },
+        {
+          id: 3,
+          skill_name: "Angular",
+          skill_range: 7,
+        },
+      ];
+      const outputBlock = document.querySelector(".skills-list");
+      for (const skill of skills) {
+        const template = document.importNode(
+          document.getElementById("li-templ").content,
+          true
+        );
+        template.querySelector(".skill-name").innerText = skill.skill_name;
+        template.querySelector(".skill").style.maxWidth =
+          10 * skill.skill_range + "%";
         outputBlock.appendChild(template);
-    }
-    styleSkillLevelLine();
+      }
+      styleSkillLevelLine();
 
-    function styleSkillLevelLine() {
+      function styleSkillLevelLine() {
         const lineToPadding = new Map();
-        lineToPadding.set('Beginner', "0");
-        lineToPadding.set('Proficient', "30%");
-        lineToPadding.set('Expert', "70%");
-        lineToPadding.set('Master', "100%");
+        lineToPadding.set("Beginner", "0");
+        lineToPadding.set("Proficient", "30%");
+        lineToPadding.set("Expert", "70%");
+        lineToPadding.set("Master", "100%");
 
-        const levelLine = document.querySelector('.skill-level-line');
+        const levelLine = document.querySelector(".skill-level-line");
 
         function addVerticalLines(value) {
-            const verticalLine = createElement('div', 'vertical-line');
-            verticalLine.style.left = value;
-            verticalLine.style.bottom = 0;
-            levelLine.before(verticalLine);
+          const verticalLine = createElement("div", "vertical-line");
+          verticalLine.style.left = value;
+          verticalLine.style.bottom = 0;
+          levelLine.before(verticalLine);
         }
 
         function addSkillDescriptions(value, key) {
-            const skillDescription = createElement('span', 'skill-description');
-            skillDescription.style.left = value;
-            skillDescription.innerText = key;
-            levelLine.after(skillDescription);
+          const skillDescription = createElement("span", "skill-description");
+          skillDescription.style.left = value;
+          skillDescription.innerText = key;
+          levelLine.after(skillDescription);
         }
 
-        lineToPadding.forEach(
-            (value, key) => {
-                addVerticalLines(value);
-                addSkillDescriptions(value, key);
-            });
-    }
+        lineToPadding.forEach((value, key) => {
+          addVerticalLines(value);
+          addSkillDescriptions(value, key);
+        });
+      }
 
-    /**
-     * @param {string} elementType name of an element, e.g. a, div
-     * @param {string[]} classes append classes to an element
-     */
-    function createElement(elementType, ...classes) {
+      /**
+       * @param {string} elementType name of an element, e.g. a, div
+       * @param {string[]} classes append classes to an element
+       */
+      function createElement(elementType, ...classes) {
         let divElement = document.createElement(elementType);
         classes.forEach((cl) => divElement.classList.add(cl));
         return divElement;
-    }
-</script>
-</body>
+      }
+    </script>
+  </body>
 </html>
