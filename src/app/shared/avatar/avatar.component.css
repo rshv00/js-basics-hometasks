@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.profile-photo {
+  background: no-repeat center;
+  background-size: cover;
+  border-radius: 50%;
+  width: 125px;
+  height: 125px;
+  border: 2px solid white;
+  margin: 15px 0; }
+
+.name {
+  font-size: 1.7em;
+  color: #FFFFFF;
+  font-weight: 700; }
+
+/*# sourceMappingURL=avatar.component.css.map */

@@ -1,0 +1,10 @@
+<app-side-nav [name]="name"
+              [imageUrl]="profilePhotoSrc"
+              [activeNavItem]="activeNavLink"
+              (navLinkClick)="onNavChanged($event)"
+></app-side-nav>
+<section class="main-content">
+  <app-text-block class="info-section" [title]="aboutMeTitle" [text]="aboutMeText"></app-text-block>
+  <app-education class="info-section" [educationItems]="educationItems"></app-education>
+  <app-experience class="info-section"></app-experience>
+</section>

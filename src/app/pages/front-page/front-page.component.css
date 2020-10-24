@@ -1,0 +1,58 @@
+.bg {
+  background-image: url("/../../../assets/img/background_image.png");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(4px) opacity(0.9); }
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2; }
+
+.center-block {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-width: 600px;
+  padding: 20px;
+  align-items: center;
+  color: #FFFFFF; }
+
+.name {
+  font-size: 36px;
+  font-weight: 600;
+  margin: 5px 0; }
+
+.bio {
+  font-size: 36px;
+  margin: 5px 0; }
+
+.detail-info {
+  margin: 5px 0; }
+
+.know-more {
+  text-decoration: none;
+  background-color: #000000;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 5px 10px;
+  margin-top: 10px; }
+
+.know-more:hover {
+  background-color: #29AB87; }
+
+@media only screen and (max-width: 550px) {
+  .name {
+    font-size: 24px; }
+
+  .bio {
+    font-size: 24px; }
+
+  .detail-info {
+    font-size: 14px; } }
+
+/*# sourceMappingURL=front-page.component.css.map */
