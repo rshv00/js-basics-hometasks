@@ -56,8 +56,7 @@ export class SideNavComponent implements OnInit {
   ];
   mobile = true;
 
-  constructor(breakpointObserver: BreakpointObserver) {
-    breakpointObserver.observe()
+  constructor() {
   }
 
   ngOnInit(): void {
