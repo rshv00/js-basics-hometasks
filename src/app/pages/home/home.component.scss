@@ -1,0 +1,26 @@
+:host {
+  display: flex;
+}
+
+app-side-nav {
+  position: relative;
+}
+
+.main-content {
+  &.blurred {
+    filter: blur(4px) opacity(.9);
+  }
+
+  position: relative;
+  max-width: 950px;
+  margin-right: 40px;
+  margin-top: 40px;
+  margin-left: 10px;
+}
+
+
+@media (max-width: 550px) {
+  :host {
+    font-size: 12px;
+  }
+}

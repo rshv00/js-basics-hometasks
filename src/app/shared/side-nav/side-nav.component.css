@@ -1,0 +1,94 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+a {
+  color: #000000;
+  text-decoration: none; }
+
+.mat-drawer-container {
+  position: fixed;
+  display: flex;
+  height: 100vh; }
+
+.navbar {
+  min-width: 250px; }
+
+.mat-drawer-navigation {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  height: 100%;
+  background-color: #000000; }
+
+.burger-menu__btn {
+  background-color: #000;
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
+  margin-left: 2px;
+  background-image: url("../../../assets/img/nav/untitled.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 5px; }
+
+.user-brief-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px dashed gray;
+  padding-bottom: 15px; }
+
+.profile-photo {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  border: 2px solid white;
+  margin: 15px 0; }
+
+.name {
+  color: #FFFFFF;
+  font-weight: 700; }
+
+.nav-list-item {
+  position: relative;
+  padding: 10px 0 10px 20px;
+  border-bottom: 1px dashed gray; }
+  .nav-list-item .selected {
+    filter: invert(82%) sepia(39%) saturate(486%) hue-rotate(63deg) brightness(107%) contrast(97%); }
+  .nav-list-item .nav-link {
+    display: flex;
+    flex-direction: row;
+    filter: invert(86%) sepia(4%) saturate(40%) hue-rotate(313deg) brightness(100%) contrast(90%); }
+    .nav-list-item .nav-link:hover {
+      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(330deg) brightness(105%) contrast(101%); }
+    .nav-list-item .nav-link .nav-icon {
+      width: 20px;
+      height: 20px; }
+
+.go-back-elem {
+  position: absolute;
+  bottom: 2%;
+  left: 50%; }
+
+.nav-item-text {
+  margin-left: 3%;
+  font-size: 1.3em; }
+
+.go-back-link {
+  position: relative;
+  left: -50%;
+  color: #E8E8E8; }
+  .go-back-link:hover {
+    color: #FFF; }
+
+@media screen and (max-width: 550px) {
+  .navbar {
+    min-width: 66vw; } }
+
+/*# sourceMappingURL=side-nav.component.css.map */

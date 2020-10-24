@@ -1,0 +1,15 @@
+.test-input {
+  height: 50px;
+  width: 200px;
+}
+
+.header {
+  color: #29AB87;
+}
+
+@media screen and (max-width: 550px) {
+  :host {
+    font-size: 12px;
+  }
+
+}
