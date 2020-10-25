@@ -108,3 +108,5 @@ dist
 *.iml
 
 .sass-cache/
+*.css
+*.css.map
