@@ -1,5 +1,6 @@
 $vertical-line-gradient-from-top: linear-gradient(to top, rgba(30, 130, 76, 0) 10%, rgba(30, 130, 76, 1));
 $vertical-line-gradient-from-bottom: linear-gradient(to bottom, rgba(30, 130, 76, 0) 10%, rgba(30, 130, 76, 1));
+$education-item-background: #6F7777;
 
 :host {
   font-family: "Open Sans", sans-serif;
@@ -43,7 +44,6 @@ $vertical-line-gradient-from-bottom: linear-gradient(to bottom, rgba(30, 130, 76
     background-image: $vertical-line-gradient-from-top;
   }
 
-
   height: 90%;
   border-left: 2px solid #29AB87;
 }
@@ -56,12 +56,12 @@ $vertical-line-gradient-from-bottom: linear-gradient(to bottom, rgba(30, 130, 76
     height: 0;
     border-style: solid;
     border-width: 8px 14px 4px 0;
-    border-color: transparent #E8E8E8 transparent transparent;
+    border-color: transparent $education-item-background transparent transparent;
     left: -14px;
   }
 
   position: relative;
-  background-color: #E8E8E8;
+  background-color: $education-item-background;
   padding: 8px;
   margin: 10px 17px 10px 30px;
   box-shadow: 0 2px 2px -2px #333;

@@ -9,12 +9,6 @@ a {
   text-decoration: none;
 }
 
-.mat-drawer-container {
-  position: fixed;
-  display: flex;
-  height: 100vh;
-}
-
 .navbar {
   min-width: 250px;
 }
@@ -25,18 +19,6 @@ a {
   padding: 0 20px;
   height: 100%;
   background-color: #000000;
-}
-
-.burger-menu__btn {
-  background-color: #000;
-  width: 30px;
-  height: 30px;
-  margin-top: 5px;
-  margin-left: 2px;
-  background-image: url("../../../assets/img/nav/untitled.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 5px;
 }
 
 .user-brief-info {
@@ -90,12 +72,6 @@ a {
   border-bottom: 1px dashed gray;
 }
 
-.go-back-elem {
-  position: absolute;
-  bottom: 2%;
-  left: 50%;
-}
-
 .nav-item-text {
   margin-left: 3%;
   font-size: 1.3em;
@@ -106,14 +82,9 @@ a {
     color: #FFF;
   }
 
+  // TODO fix displaying of go back link
   position: relative;
-  left: -50%;
   color: #E8E8E8;
-}
-
-@media screen and (max-width: 550px){
-  .navbar {
-    min-width: 66vw;
-  }
-
+  z-index: 100;
+  left: -40%;
 }

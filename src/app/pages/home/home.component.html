@@ -1,10 +1,25 @@
-<app-side-nav [name]="name"
-              [imageUrl]="profilePhotoSrc"
-              [activeNavItem]="activeNavLink"
-              (navLinkClick)="onNavChanged($event)"
-></app-side-nav>
-<section class="main-content">
-  <app-text-block class="info-section" [title]="aboutMeTitle" [text]="aboutMeText"></app-text-block>
-  <app-education class="info-section" [educationItems]="educationItems"></app-education>
-  <app-experience class="info-section"></app-experience>
-</section>
+<mat-toolbar color="primary">
+    <mat-icon class="menu-burger" (click)="drawer.toggle()" *ngIf="isSmallScreen">menu</mat-icon>
+    <div class="label">
+        <mat-icon class="header-label">business</mat-icon>
+        <h3 class="header" style="color: white">Portfolio</h3>
+    </div>
+</mat-toolbar>
+<mat-sidenav-container class="mat-drawer-container" autosize>
+    <mat-sidenav #drawer class="mat-drawer-side-nav" [mode]="isSmallScreen ? 'over' : 'side'"
+                 opened="{{!isSmallScreen}}">
+        <app-side-nav [name]="name"
+                      [imageUrl]="profilePhotoSrc"
+                      [activeNavItem]="activeNavLink"
+                      (navLink)="onNavChanged($event)">
+        </app-side-nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <section class="main-content">
+            <app-text-block class="info-section" [title]="aboutMeTitle" [text]="aboutMeText"></app-text-block>
+            <app-education class="info-section" [educationItems]="educationItems"></app-education>
+            <app-experience class="info-section"></app-experience>
+            <app-contacts></app-contacts>
+        </section>
+    </mat-sidenav-content>
+</mat-sidenav-container>

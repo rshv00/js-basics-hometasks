@@ -16,6 +16,10 @@
 }
 
 .center-block {
+  > * {
+    margin: 2%;
+  }
+
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -28,25 +32,19 @@
 .name {
   font-size: 36px;
   font-weight: 600;
-  margin: 5px 0;
 }
 
 .bio {
-  font-size: 36px;
-  margin: 5px 0;
-}
-
-.detail-info {
-  margin: 5px 0;
+  font-size: 30px;
 }
 
 .know-more {
+  font-size: 16px;
   text-decoration: none;
   background-color: #000000;
   color: #FFFFFF;
   text-align: center;
   padding: 5px 10px;
-  margin-top: 10px;
 }
 
 .know-more:hover {
@@ -59,7 +57,7 @@
   }
 
   .bio {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .detail-info {
