@@ -1,5 +1,5 @@
-<app-avatar class="user-brief-info" [imageUrl]="imageUrl">{{name}}</app-avatar>
 <nav class="navbar">
+    <app-avatar class="user-brief-info" [imageUrl]="imageUrl">{{name}}</app-avatar>
     <ul class="navbar-list">
         <li *ngFor="let navigationItem of navigationItems" class="nav-list-item">
             <a class="nav-link"
@@ -10,7 +10,8 @@
             </a>
         </li>
     </ul>
+    <a class="go-back-link" routerLink='/'>
+        <span>Go back</span>
+    </a>
 </nav>
-<a class="go-back-link" routerLink='/'>
-    <span>Go back</span>
-</a>
+
