@@ -1,4 +1,9 @@
 @import '../../../variables';
+
+.section-header {
+  margin: 16px auto;
+}
+
 .dotted-divider {
   border-style: none;
   border-top: 2px dotted $primary-color;

@@ -1,8 +1,7 @@
 @import '../../../variables';
 
 .section-header {
-  color: $primary-color;
-  margin: 30px 20px;
+  margin: 16px auto;
 }
 
 .section-content {
@@ -11,7 +10,7 @@
 
 .feedback-item {
   position: relative;
-  margin: 50px 20px;
+  margin: 0 20px 50px;
 }
 
 .content .feedback-item:first-of-type {
