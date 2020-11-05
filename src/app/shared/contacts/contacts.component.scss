@@ -5,7 +5,7 @@
 }
 
 .contacts-content {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .contacts-item {
@@ -13,10 +13,7 @@
 }
 
 .contact-icon-wrapper {
-  position: relative;
-  margin-right: 20px;
-  width: 60px;
-  height: 60px;
+  padding: 20px;
   border-right: $border;
   border-bottom: $border;
 }
@@ -26,17 +23,11 @@
 }
 
 .contact-icon {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  max-width: 32px;
-  max-height: 32px;
+  width: 32px;
 }
 
 .contacts-item-content {
+  margin-left: 15px;
   display: block;
   align-self: center;
 }
