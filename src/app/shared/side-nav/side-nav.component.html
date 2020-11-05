@@ -1,15 +1,17 @@
 <nav class="navbar">
-    <app-avatar class="user-brief-info" [imageUrl]="imageUrl">{{name}}</app-avatar>
-    <ul class="navbar-list">
-        <li *ngFor="let navigationItem of navigationItems" class="nav-list-item">
-            <a class="nav-link"
-               href="#contacts"
-               [ngClass]="{'active': navigationItem.id === activeNavItem}">
-                <img class="nav-icon" [src]="navigationItem.icon" [alt]="navigationItem.alt">
-                <p class="nav-item-text">{{navigationItem.text}}</p>
-            </a>
-        </li>
-    </ul>
+    <div>
+        <app-avatar class="user-brief-info" [imageUrl]="imageUrl">{{name}}</app-avatar>
+        <ul class="navbar-list">
+            <li *ngFor="let navigationItem of navigationItems" class="nav-list-item">
+                <a class="nav-link"
+                   href="#contacts"
+                   [ngClass]="{'active': navigationItem.id === activeNavItem}">
+                    <img class="nav-icon" [src]="navigationItem.icon" [alt]="navigationItem.alt">
+                    <p class="nav-item-text">{{navigationItem.text}}</p>
+                </a>
+            </li>
+        </ul>
+    </div>
     <a class="go-back-link" routerLink='/'>
         <span>Go back</span>
     </a>

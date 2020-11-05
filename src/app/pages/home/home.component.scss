@@ -2,21 +2,22 @@ app-side-nav {
   position: relative;
 }
 
+.page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .main-content {
   &.blurred {
     filter: blur(4px) opacity(.9);
   }
 
+  max-height: 100vh;
   position: relative;
   max-width: 950px;
-  margin-right: 40px;
-  margin-top: 10px;
-  margin-left: 10px;
-}
-
-.mat-drawer-container {
-  width: 100vw;
-  height: 100vh;
+  margin: 0 auto;
+  padding: 0 10px;
 }
 
 .label {
@@ -24,4 +25,5 @@ app-side-nav {
   flex-direction: row;
   margin-left: 5%;
   margin-top: 5px;
+  padding: 10px 0;
 }
