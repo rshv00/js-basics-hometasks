@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {FrontPageComponent} from './pages/front-page/front-page.component';
-import {HomeComponent} from './pages/home/home.component';
 
 const routes: Routes = [
     {
@@ -10,12 +9,16 @@ const routes: Routes = [
 
     }, {
         path: 'home',
-        component: HomeComponent
+        loadChildren: () =>
+            import('./pages/home/home.module').then(
+                (m) => m.HomeModule
+            )
     }
 ];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes, {
+        enableTracing: true,
         anchorScrolling: 'enabled',
         scrollPositionRestoration: 'enabled'
     })],

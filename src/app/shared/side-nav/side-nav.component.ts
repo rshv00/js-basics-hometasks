@@ -1,6 +1,8 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {NavigationItem} from '../../models/NavigationItem';
 import {ContentService} from '../../core/content.service';
+import {ViewportScroller} from '@angular/common';
+import validate = WebAssembly.validate;
 
 @Component({
     selector: 'app-side-nav',
@@ -19,7 +21,6 @@ export class SideNavComponent implements OnInit {
     name: string;
 
     constructor(private contentService: ContentService) {
-        // TODO make scrolling to anchor
     }
 
     ngOnInit(): void {

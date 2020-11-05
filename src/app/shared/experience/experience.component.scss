@@ -1,6 +1,7 @@
+@import '../../../variables';
 .dotted-divider {
   border-style: none;
-  border-top: 2px dotted #29AB87;
+  border-top: 2px dotted $primary-color;
 }
 
 .experience-li {

@@ -1,0 +1,39 @@
+@import '../../../variables';
+
+.skills-list {
+  list-style-type: none;
+}
+
+.skill {
+  border-radius: 2px;
+  margin: 3px 0;
+  padding: 7px;
+  background-color: $primary-color;
+  color: $text-color;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.skills-details, .vertical-lines-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.vertical-lines-container {
+  margin-top: 1vh;
+}
+
+.vertical-line {
+  height: 7px;
+  border-left: 2px solid #FFF;
+}
+
+.skill-level-line {
+  border: 1px solid #FFF;
+  margin-top: 0;
+}
+
+.skill-name {
+  font-weight: 500;
+}

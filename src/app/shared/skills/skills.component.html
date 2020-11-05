@@ -1,1 +1,20 @@
-<p>skills works!</p>
+<section id="skills">
+    <h2 class="section-header">Skills</h2>
+    <ul class="skills-list">
+        <li class="skill"
+            *ngFor="let skill of skills"
+            [ngStyle]="{'max-width': 10 * skill.skillRange + '%'}">
+            <span class="skill-name">{{skill.skillName}}</span>
+        </li>
+    </ul>
+    <div class="vertical-lines-container">
+        <div class="vertical-line" *ngFor="let i of [].constructor(4)"></div>
+    </div>
+    <hr class="skill-level-line"/>
+    <div class="skills-details">
+                <span class="skills-details__skill-level"
+                      *ngFor="let skillLevel of skillLevels">
+                {{skillLevel}}
+            </span>
+    </div>
+</section>

@@ -4,6 +4,7 @@ import {Contact} from '../models/Contact';
 import {Feedback} from '../models/Feedback';
 import {EducationItem} from '../models/EducationItem';
 import {NavigationItem} from '../models/NavigationItem';
+import {SkillItem} from '../models/SkillItem';
 
 @Injectable({
     providedIn: 'root'
@@ -66,6 +67,11 @@ export class ContentService {
     ];
 
     contacts = [
+        new Contact(0,
+            'assets/img/contacts/phone.svg',
+            'Phone icon',
+            '500 345 242',
+            'tel:500345242'),
         new Contact(0,
             'assets/img/contacts/email.svg',
             'Mail icon',
@@ -142,5 +148,12 @@ export class ContentService {
             'Chat icon',
             'Feedbacks',
             'feedbacks')
+    ];
+
+    skillItems = [
+        new SkillItem(0, 'HTML', 10),
+        new SkillItem(1, 'CSS', 5),
+        new SkillItem(2, 'jQuery', 1),
+        new SkillItem(3, 'Angular', 7)
     ];
 }

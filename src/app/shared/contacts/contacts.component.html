@@ -1,3 +1,21 @@
-<div id="contacts" style="height: 1000px">
-    <h2 class="header">Contacts section with height 1000px</h2>
-</div>
+<section id="contacts">
+    <h2 class="section-header">Contacts</h2>
+    <div class="contacts-content" *ngFor="let contact of contacts; index as i">
+        <div class="contacts-item">
+            <div class="contact-icon-wrapper" [ngClass]="{'contact-icon-wrapper-last': i === contacts.length-1}">
+                <img class="contact-icon" [src]="contact.iconUrl">
+            </div>
+            <div class="contacts-item-content">
+                <a class="contacts-item-heading" #contactsHeading
+                   [attr.href]="contact.title ? null : contact.href"
+                   [ngClass]="{'inactive-link': !contactsHeading.href}">
+                    {{contact.title ? contact.title : contact.value}}
+                </a>
+                <a class="contacts-item-description"
+                   href="{{contact.href}}"
+                   target="_blank"
+                   *ngIf="contact.title">{{contact.value}}</a>
+            </div>
+        </div>
+    </div>
+</section>

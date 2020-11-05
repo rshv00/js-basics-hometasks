@@ -11,6 +11,7 @@ import {NavigationItem} from '../../models/NavigationItem';
 export class HomeComponent implements OnInit {
     aboutMeText = this.contentService.aboutMeText;
     aboutMeTitle = 'About me';
+    navItems = this.contentService.navigationItems;
     activeNavLink: number;
     educationItems = this.contentService.educationItems;
     isSmallScreen: boolean;

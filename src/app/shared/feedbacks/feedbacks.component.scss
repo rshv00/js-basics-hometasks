@@ -1,0 +1,63 @@
+@import '../../../variables';
+
+.section-header {
+  color: $primary-color;
+  margin: 30px 20px;
+}
+
+.section-content {
+  list-style-type: none;
+}
+
+.feedback-item {
+  position: relative;
+  margin: 50px 20px;
+}
+
+.content .feedback-item:first-of-type {
+  margin-top: 25px;
+}
+
+.feedback-author {
+  position: absolute;
+  top: 55%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.feedback-author-about {
+  font-size: 14px;
+  font-weight: 400;
+  display: inline;
+}
+
+.feedback-author-about span:first-child {
+  margin-left: 4px;
+}
+
+.feedback-content {
+  background-color: #6F7777;
+  padding: 10px;
+  border-radius: 2px;
+}
+
+.feedback-author-photo__img {
+  max-width: 40px;
+  max-height: 40px;
+  border-radius: 50%;
+}
+
+.feedback-author-about__website {
+  color: $primary-color;
+}
+
+@media screen and (max-width: 550px) {
+  body {
+    font-size: 12px;
+  }
+
+  .feedback-author-about {
+    font-size: 10px;
+  }
+}

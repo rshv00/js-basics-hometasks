@@ -40,7 +40,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
         TextBlockComponent,
         EducationComponent,
         ExperienceComponent,
-        ContactsComponent
+        ContactsComponent,
+        SkillsComponent,
+        FeedbacksComponent
     ]
 })
 export class SharedModule {

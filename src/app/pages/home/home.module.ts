@@ -5,6 +5,7 @@ import {SharedModule} from '../../shared/shared.module';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {HomeRoutingModule} from './home.routing.module';
 
 
 
@@ -18,7 +19,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
         SharedModule,
         MatSidenavModule,
         MatIconModule,
-        MatToolbarModule
+        MatToolbarModule,
+        HomeRoutingModule
     ]
 })
 export class HomeModule { }

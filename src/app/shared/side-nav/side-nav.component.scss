@@ -1,3 +1,5 @@
+@import '../../../variables';
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -42,7 +44,7 @@ a {
 }
 
 .name {
-  color: #FFFFFF;
+  color: $text-color;
   font-weight: 700;
 }
 
@@ -79,7 +81,7 @@ a {
 
 .go-back-link {
   &:hover {
-    color: #FFF;
+    color: $text-color;
   }
 
   // TODO fix displaying of go back link
