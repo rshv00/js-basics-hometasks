@@ -3,16 +3,19 @@
     <ul class="section-content">
         <li class="feedback-item" *ngFor="let feedback of feedbacks">
             <p class="feedback-content">{{feedback.content}}</p>
+
             <div class="feedback-author">
-                <div class="feedback-author-photo"></div>
-                <img [src]="feedback.authorPicUrl" class="feedback-author-photo__img">
+                <div class="feedback-author-photo">
+                    <img [src]="feedback.authorPicUrl" class="feedback-author-photo__img">
+                </div>
+                <div class="feedback-author-about">
+                    <span class="feedback-author-about__name">{{feedback.author}}</span>
+                    <span class="feedback-author-about__occupation">{{ feedback.occupation}}, </span>
+                    <a class="feedback-author-about__website" [href]="feedback.personalSiteLink"
+                       target="_blank">{{cutLinkProtocol(feedback.personalSiteLink)}}</a>
+                </div>
             </div>
-            <div class="feedback-author-about">
-                <span class="feedback-author-about__name">{{feedback.author}}</span>
-                <span class="feedback-author-about__occupation">{{ feedback.occupation}}</span>
-                <a class="feedback-author-about__website" [href]="feedback.personalSiteLink"
-                   target="_blank">{{cutLinkProtocol(feedback.personalSiteLink)}}</a>
-            </div>
+
         </li>
     </ul>
 </section>
