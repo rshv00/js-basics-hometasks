@@ -2,6 +2,10 @@ app-side-nav {
   position: relative;
 }
 
+.section-header {
+  padding-left: 15px;
+}
+
 .page-container {
   display: flex;
   flex-direction: column;
@@ -20,10 +24,13 @@ app-side-nav {
   padding: 0 10px;
 }
 
+.header-label {
+  font-size: 1.8em;
+  width: max-content;
+}
+
 .label {
   display: flex;
-  flex-direction: row;
   margin-left: 5%;
-  margin-top: 5px;
-  padding: 10px 0;
+  padding: 5px 0;
 }

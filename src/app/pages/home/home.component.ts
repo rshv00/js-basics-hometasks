@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ContentService} from '../../core/content.service';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {NavigationItem} from '../../models/NavigationItem';
+import {ViewportScroller} from '@angular/common';
 
 @Component({
     selector: 'app-home',
@@ -19,7 +20,8 @@ export class HomeComponent implements OnInit {
     profilePhotoSrc = 'assets/img/profile_photo.jpg';
 
     constructor(private contentService: ContentService,
-                private breakpointObserver: BreakpointObserver) {
+                private breakpointObserver: BreakpointObserver,
+                private viewportScroller: ViewportScroller) {
     }
 
     ngOnInit(): void {
@@ -33,6 +35,7 @@ export class HomeComponent implements OnInit {
 
     onNavChanged(navItem: NavigationItem): void {
         this.activeNavLink = navItem.id;
+        this.viewportScroller.scrollToAnchor(navItem.href);
     }
 
 }

@@ -2,8 +2,7 @@
     <mat-toolbar color="primary">
         <mat-icon class="menu-burger" (click)="drawer.toggle()" *ngIf="isSmallScreen">menu</mat-icon>
         <div class="label">
-            <mat-icon class="header-label">business</mat-icon>
-            <h3 class="section-header" style="color: white">Portfolio</h3>
+            <h3 class="section-header" style="color: white"><mat-icon class="header-label">sports_tennis</mat-icon>rtfolio</h3>
         </div>
     </mat-toolbar>
     <mat-sidenav-container class="mat-drawer-container" autosize>
@@ -17,12 +16,12 @@
         </mat-sidenav>
         <mat-sidenav-content>
             <section class="main-content">
-                <app-text-block [title]="aboutMeTitle" [text]="aboutMeText"></app-text-block>
-                <app-education [educationItems]="educationItems"></app-education>
-                <app-experience></app-experience>
-                <app-skills></app-skills>
-                <app-contacts></app-contacts>
-                <app-feedbacks></app-feedbacks>
+                <app-text-block id="about" [title]="aboutMeTitle" [text]="aboutMeText"></app-text-block>
+                <app-education id="education" [educationItems]="educationItems"></app-education>
+                <app-experience id="experience"></app-experience>
+                <app-skills id="skills"></app-skills>
+                <app-contacts id="contacts"></app-contacts>
+                <app-feedbacks id="feedbacks"></app-feedbacks>
             </section>
         </mat-sidenav-content>
     </mat-sidenav-container>

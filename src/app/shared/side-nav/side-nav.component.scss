@@ -63,6 +63,11 @@ a {
       filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(330deg) brightness(105%) contrast(101%);
     }
 
+    &.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
     .nav-icon {
       width: 20px;
       height: 20px;
@@ -74,12 +79,13 @@ a {
   }
 
   position: relative;
-  padding: 10px 0 10px 20px;
+  padding: 10px;
+  padding-bottom: 0;
   border-bottom: 1px dashed gray;
 }
 
 .nav-item-text {
-  margin-left: 3%;
+  margin-left: 14px;
   font-size: 1.3em;
 }
 
@@ -92,5 +98,4 @@ a {
   width: max-content;
   margin: 10px auto;
   color: #E8E8E8;
-  z-index: 100;
 }
