@@ -6,13 +6,14 @@
 
             <div class="feedback-author">
                 <div class="feedback-author-photo">
-                    <img [src]="feedback.authorPicUrl" class="feedback-author-photo__img">
+                    <img [src]="feedback.feedbackAuthor.photoUrl" class="feedback-author-photo__img">
                 </div>
                 <div class="feedback-author-about">
-                    <span class="feedback-author-about__name">{{feedback.author}}</span>
-                    <span class="feedback-author-about__occupation">{{ feedback.occupation}}, </span>
-                    <a class="feedback-author-about__website" [href]="feedback.personalSiteLink"
-                       target="_blank">{{cutLinkProtocol(feedback.personalSiteLink)}}</a>
+                    <span class="feedback-author-about__name">{{feedback.feedbackAuthor.firstName + ' ' + feedback.feedbackAuthor.lastName}}</span>
+                    <span class="feedback-author-about__occupation">{{ feedback.feedbackAuthor.jobPosition}}
+                        at {{feedback.feedbackAuthor.company}}</span>
+                    <a class="feedback-author-about__website" [href]="feedback.feedbackAuthor.websiteUrl"
+                       target="_blank">{{cutLinkProtocol(feedback.feedbackAuthor.websiteUrl)}}</a>
                 </div>
             </div>
 

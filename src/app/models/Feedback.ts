@@ -1,17 +1,14 @@
+import {PersonData} from './PersonData';
+
 export class Feedback {
   id: number;
+  feedbackAuthor: PersonData;
   content: string;
-  author: string;
-  authorPicUrl: string;
-  occupation: string;
-  personalSiteLink: string;
 
-  constructor(id: number, content: string, author: string, authorPicUrl: string, occupation: string, personalSiteLink: string) {
+
+  constructor(id: number, feedbackAuthor: PersonData, content: string) {
     this.id = id;
+    this.feedbackAuthor = feedbackAuthor;
     this.content = content;
-    this.author = author;
-    this.authorPicUrl = authorPicUrl;
-    this.occupation = occupation;
-    this.personalSiteLink = personalSiteLink;
   }
 }

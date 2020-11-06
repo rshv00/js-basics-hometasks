@@ -5,15 +5,15 @@ import {Feedback} from '../models/Feedback';
 import {EducationItem} from '../models/EducationItem';
 import {NavigationItem} from '../models/NavigationItem';
 import {SkillItem} from '../models/SkillItem';
+import {BehaviorSubject, Subject} from 'rxjs';
+import {FormArray, FormControl} from '@angular/forms';
+import {PersonData} from '../models/PersonData';
+import {ContentApiService} from './content-api.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class ContentService {
-
-    constructor() {
-    }
-
     aboutMeText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore\n' +
         '        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\n' +
         '        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla\n' +
@@ -96,22 +96,6 @@ export class ContentService {
             'callto:kamsolutions.pl',
             'Skype')
     ];
-
-    feedbacks = [
-        new Feedback(0,
-            'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo',
-            'Martin Friman',
-            'https://img.112.international/original/2015/08/05/175548.JPG',
-            'Programmer',
-            'https://somesite.com'),
-        new Feedback(0,
-            'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo',
-            'Martin Friman',
-            'https://img.112.international/original/2015/08/05/175548.JPG',
-            'Programmer',
-            'https://somesite.com')
-    ];
-
     navigationItems = [
         new NavigationItem(0,
             'assets/img/nav/user.svg',
@@ -156,4 +140,49 @@ export class ContentService {
         new SkillItem(2, 'jQuery', 1),
         new SkillItem(3, 'Angular', 7)
     ];
+
+    content: Subject<any> = new BehaviorSubject<any>([]);
+
+    error: Subject<string>;
+
+    constructor(private contentApiService: ContentApiService) {
+        this.contentApiService.getData().subscribe(
+            (data: any) => {
+                this.content.next(data);
+            }
+        );
+    }
+
+    saveData(educationForm: FormArray, experienceForm: FormArray, skillsForm: FormArray, contactsForm: FormArray,
+             feedbacksForm: FormArray, aboutForm: FormControl): void {
+        const inputData = this.mapData(educationForm, experienceForm, skillsForm, contactsForm, feedbacksForm, aboutForm);
+        this.contentApiService.saveData(inputData).subscribe(
+            (data: any) => {
+                this.content.next(inputData);
+            }, error => {
+                this.error.next(error);
+            }
+        );
+    }
+
+    private mapData(educationForm: FormArray, experienceForm: FormArray, skillsForm: FormArray, contactsForm: FormArray,
+                    feedbacksForm: FormArray, aboutForm: FormControl): any {
+        return {
+            contactsList: contactsForm.value.map(contact =>
+                new Contact(contact.id, contact.iconUrl, contact.iconAlt, contact.value, contact.href, contact.title)),
+            skillsList: skillsForm.value.map(skill =>
+                new SkillItem(skill.id, skill.skillName, skill.skillRange)),
+            educationList: educationForm.value.map(education =>
+                new EducationItem(education.id, education.year, education.details)),
+            experienceList: experienceForm.value.map(experience =>
+                new ExperienceItem(experience.id, experience.jobPlace, experience.percent, experience.jobTitle, experience.jobDescription)),
+            feedbacksList: feedbacksForm.value.map(feedback => {
+                const fullName = feedback.fullName.split(' ');
+                const firstName = fullName[0];
+                const lastName = fullName[1];
+                return new Feedback(0, new PersonData(firstName, lastName, feedback.company,
+                    feedback.jobPosition, feedback.photoUrl, feedback.websiteUrl), feedback.content);
+            }),
+        };
+    }
 }
