@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {AdminAuthComponent} from './admin-auth/admin-auth.component';
 import {AdminComponent} from './admin.component';
 import {AdminRoutingModule} from './admin.routing.module';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 
 
@@ -13,7 +13,8 @@ import {MatButtonModule} from '@angular/material/button';
         CommonModule,
         AdminRoutingModule,
         FormsModule,
-        MatButtonModule
+        MatButtonModule,
+        ReactiveFormsModule
     ]
 })
 export class AdminModule {
