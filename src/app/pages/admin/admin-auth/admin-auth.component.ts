@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {NgModel} from '@angular/forms';
 import {AdminAuthService} from './admin-auth.service';
 import {Router} from '@angular/router';
@@ -16,10 +16,12 @@ export class AdminAuthComponent implements OnInit {
     loginFail = false;
 
     constructor(private authService: AdminAuthService,
-                private router: Router) {
+                private router: Router,
+                private ref: ChangeDetectorRef) {
     }
 
     ngOnInit(): void {
+        this.ref.detectChanges();
     }
 
     onSubmit(): void {
@@ -28,7 +30,7 @@ export class AdminAuthComponent implements OnInit {
             .then(succeed => this.loginFail = !succeed);
     }
 
-    touchedAndDirty(attribute: NgModel): boolean {
-        return attribute.touched && attribute.dirty;
+    touchedOrDirty(attribute: NgModel): boolean {
+        return attribute.touched || attribute.dirty;
     }
 }
