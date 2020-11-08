@@ -3,12 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  adminLogin: 'admin',
-  adminPassword: 'password',
-  baseUrl: 'https://my-json-server.typicode.com/shilicioo/testportfolio',
-  contentEndpointGet: '/content',
-  contentEndpointPost: '/contentPost'
+    production: false,
+    adminLogin: 'admin',
+    adminPassword: 'nimda1',
+    baseUrl: 'http://localhost:4000/api',
+    contentEndpointGet: '/content',
+    contentEndpointPost: '/contentPost'
 };
 
 /*

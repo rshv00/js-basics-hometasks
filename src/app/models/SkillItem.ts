@@ -1,11 +1,11 @@
 export class SkillItem {
     id: number;
-    skillName: string;
-    skillRange: number;
+    technology: string;
+    level: number;
 
-    constructor(id: number, skillName: string, skillRange: number) {
+    constructor(id: number, technology: string, level: number) {
         this.id = id;
-        this.skillName = skillName;
-        this.skillRange = skillRange;
+        this.technology = technology;
+        this.level = level;
     }
 }

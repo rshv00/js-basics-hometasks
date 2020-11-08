@@ -1,0 +1,24 @@
+<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+    <div class="form-block">
+        <label class="form-label" for="skill">Skill name:</label>
+        <div>
+            <input class="form-input" id="skill" type="text" formControlName="technology" placeholder="Enter skill name"/>
+            <div class="validation-error-msg"
+                 *ngIf="technology.errors?.required && technology.dirty">This field is required.
+            </div>
+        </div>
+    </div>
+    <div class="form-block">
+        <label class="form-label" for="level">Skill range:</label>
+        <div>
+            <input class="form-input" id="level" type="number" formControlName="level" placeholder="Enter skill range"/>
+            <div class="validation-error-msg"
+                 *ngIf="level.errors?.required && level.dirty">This field is required.
+            </div>
+            <div class="validation-error-msg"
+                 *ngIf="(level.errors?.min || level.errors?.max) && level.dirty">Value must be between 1 and 10.
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="submit-button" [disabled]="form.invalid">Add skill</button>
+</form>

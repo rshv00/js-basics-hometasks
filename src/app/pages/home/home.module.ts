@@ -6,7 +6,11 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {HomeRoutingModule} from './home.routing.module';
-
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
+import {homeFeatureKey, homePageReducer} from './+state/home.reducer';
+import {HomeEffects} from './+state/home.effects';
 
 @NgModule({
     declarations: [HomeComponent],
@@ -20,6 +24,9 @@ import {HomeRoutingModule} from './home.routing.module';
         MatIconModule,
         MatToolbarModule,
         HomeRoutingModule,
+        MatProgressBarModule,
+        StoreModule.forFeature(homeFeatureKey, homePageReducer),
+        EffectsModule.forFeature([HomeEffects])
     ]
 })
 export class HomeModule {

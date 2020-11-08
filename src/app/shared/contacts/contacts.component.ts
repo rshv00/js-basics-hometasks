@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {ContentService} from '../../core/content.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {Contact} from '../../models/Contact';
 
 @Component({
     selector: 'app-contacts',
@@ -7,12 +7,16 @@ import {ContentService} from '../../core/content.service';
     styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent implements OnInit {
-    contacts = this.contentService.contacts;
+    @Input()
+    contacts: Array<Contact>;
 
-    constructor(private contentService: ContentService) {
+    constructor() {
     }
 
     ngOnInit(): void {
     }
 
+    getIconUrl(contact: Contact): string {
+        return 'assets/img/contacts/' + contact.iconName;
+    }
 }

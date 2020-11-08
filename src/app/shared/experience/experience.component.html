@@ -1,8 +1,8 @@
 <div id="experience" class="section-header">
-  <h2>{{header}}</h2>
+  <h2>{{HEADER}}</h2>
 </div>
 <ul class="experience-list">
-  <li class="experience-li" *ngFor="let experienceItem of experienceItems; let i = index">
+  <li class="experience-li" *ngFor="let experienceItem of experienceList; let i = index">
     <div class="experience-li-left-info">
       <div class="experience-li-left-info__job-place">{{experienceItem.jobPlace}}</div>
       <div class="experience-li-left-info__period">{{experienceItem.period}}</div>
@@ -11,6 +11,6 @@
       <div class="experience-li-right-info__job-title">{{experienceItem.jobTitle}}</div>
       <div class="experience-li-right-info__job-description">{{experienceItem.jobDescription}}</div>
     </div>
-    <hr class="dotted-divider" *ngIf="i !== experienceItems.length - 1">
+    <hr class="dotted-divider" *ngIf="i !== experienceList.length - 1">
   </li>
 </ul>

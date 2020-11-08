@@ -3,7 +3,7 @@
     <div class="contacts-content" *ngFor="let contact of contacts; index as i">
         <div class="contacts-item">
             <div class="contact-icon-wrapper" [ngClass]="{'contact-icon-wrapper-last': i === contacts.length-1}">
-                <img class="contact-icon" [src]="contact.iconUrl">
+                <img class="contact-icon" [src]="getIconUrl(contact)">
             </div>
             <div class="contacts-item-content">
                 <a class="contacts-item-heading" #contactsHeading

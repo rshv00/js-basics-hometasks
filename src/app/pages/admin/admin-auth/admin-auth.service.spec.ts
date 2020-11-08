@@ -13,4 +13,12 @@ describe('AdminAuthService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should not allow login with wrong admin credentials', () => {
+    expect(service.login("wrong", "wrong")).toBeFalse();
+  });
+
+  it('should allow login with correct admin credentials', () => {
+    expect(service.login("admin", "nimda1")).toBeTrue();
+  });
 });

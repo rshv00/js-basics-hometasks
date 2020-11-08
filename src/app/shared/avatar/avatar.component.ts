@@ -1,18 +1,20 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {PersonData} from '../../models/PersonData';
 
 @Component({
-  selector: 'app-avatar',
-  templateUrl: './avatar.component.html',
-  styleUrls: ['./avatar.component.scss']
+    selector: 'app-avatar',
+    templateUrl: './avatar.component.html',
+    styleUrls: ['./avatar.component.scss']
 })
 export class AvatarComponent implements OnInit {
-  @Input()
-  imageUrl: string;
 
-  constructor() {
-  }
+    @Input()
+    personData: PersonData;
 
-  ngOnInit(): void {
-  }
+    constructor() {
+    }
+
+    ngOnInit(): void {
+    }
 
 }

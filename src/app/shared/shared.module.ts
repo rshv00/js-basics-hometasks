@@ -13,6 +13,10 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { SkillsFormComponent } from './skills-form/skills-form.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import { ModalWindowComponent } from './modal-window/modal-window.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 
 @NgModule({
@@ -24,7 +28,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     FeedbacksComponent,
     SideNavComponent,
     SkillsComponent,
-    TextBlockComponent
+    TextBlockComponent,
+    SkillsFormComponent,
+    ModalWindowComponent
   ],
     imports: [
         CommonModule,
@@ -33,6 +39,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
         MatButtonModule,
         MatIconModule,
         MatToolbarModule,
+        ReactiveFormsModule,
+        MatDialogModule
     ],
     exports: [
         SideNavComponent,

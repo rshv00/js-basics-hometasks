@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {ContentService} from '../../core/content.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {ExperienceItem} from '../../models/ExperienceItem';
 
 @Component({
     selector: 'app-experience',
@@ -7,10 +7,11 @@ import {ContentService} from '../../core/content.service';
     styleUrls: ['./experience.component.scss']
 })
 export class ExperienceComponent implements OnInit {
-    header = 'Experience';
-    experienceItems = this.contentService.experienceItems;
+    readonly HEADER = 'Experience';
+    @Input()
+    experienceList: Array<ExperienceItem>;
 
-    constructor(private contentService: ContentService) {
+    constructor() {
     }
 
     ngOnInit(): void {

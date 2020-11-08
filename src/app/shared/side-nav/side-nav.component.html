@@ -1,6 +1,6 @@
 <nav class="navbar">
     <div>
-        <app-avatar class="user-brief-info" [imageUrl]="imageUrl">{{name}}</app-avatar>
+        <ng-content></ng-content>
         <ul class="navbar-list">
             <li *ngFor="let navigationItem of navigationItems" class="nav-list-item">
                 <a class="nav-link"

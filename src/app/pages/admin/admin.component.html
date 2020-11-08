@@ -1,12 +1,207 @@
-<form class="outer-form" [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
-
-    <div class="form-block">
-        <div class="form-label-wrapper">
-            <label class="form-label">About me</label>
-            <div class="validation-error-msg">
-
-            </div>
+<form *ngIf="!isLoading else progressBar" class="edit-form" [formGroup]="form" (ngSubmit)="handleSubmit()"
+      autocomplete="off">
+    <section class="edit-form-section">
+        <div class="header-wrapper">
+            <label for="about">About me</label>
+            <div *ngIf="about.invalid && about.touched" class="form-error-msg">{{blockValidationLabel}}</div>
         </div>
-    </div>
+        <div class="form-block">
+            <textarea class="text-area" id="about" formControlName="about" placeholder="Some info about you"></textarea>
+            <div *ngIf="about.errors?.required && isTouchedOrDirty(about)"
+                 class="form-error-msg">{{requiredLabel}}</div>
+        </div>
+    </section>
 
+    <section class="edit-form-section" formArrayName="education">
+        <div class="header-wrapper">
+            <h3>Education</h3>
+            <div *ngIf="education.invalid && education.touched" class="form-error-msg">{{blockValidationLabel}}</div>
+        </div>
+        <div class="form-block">
+            <div class="inner-form" *ngFor="let educationForm of education.controls; let i = index" [formGroupName]="i">
+                <button class="delete-btn" (click)="handleDeleteItem('education', i)">Delete</button>
+                <section class="input-wrapper">
+                    <label class="form-label" for="year">Year</label>
+                    <input class="form-input" id="year" formControlName="year" placeholder="2006"
+                           [class.has-error]="educationForm.get('year').invalid && educationForm.get('year').touched"/>
+                    <div *ngIf="educationForm.get('year').errors?.required && isTouchedOrDirty(educationForm.get('year'))"
+                         class="form-error-msg">{{requiredLabel}}</div>
+                    <div *ngIf="educationForm.get('year').errors?.forbiddenYear && isTouchedOrDirty(educationForm.get('year'))"
+                         class="form-error-msg">{{incorrectLabel}}</div>
+                </section>
+                <section class="input-wrapper">
+                    <label class="form-label" for="ed-description">Description</label>
+                    <textarea
+                            [class.has-error]="educationForm.get('description').invalid && educationForm.get('description').touched"
+                            class="text-area" id="ed-description" formControlName="description"
+                            placeholder="Description of your education"></textarea>
+                    <div *ngIf="educationForm.get('description').errors?.required && isTouchedOrDirty(educationForm.get('description'))"
+                         class="form-error-msg">{{requiredLabel}}</div>
+                </section>
+            </div>
+            <button class="add-btn" [disabled]="form.get('education').invalid" (click)="handleAddEducation()">Add
+            </button>
+        </div>
+    </section>
+
+    <section class="edit-form-section" formArrayName="experience">
+        <div class="header-wrapper">
+            <h3>Experience</h3>
+            <div *ngIf="experience.invalid && experience.touched" class="form-error-msg">{{blockValidationLabel}}</div>
+        </div>
+
+        <div class="form-block">
+            <div class="inner-form" *ngFor="let experienceForm of experience.controls; let i = index"
+                 [formGroupName]="i">
+                <button class="delete-btn" (click)="handleDeleteItem('experience', i)">Delete</button>
+                <section class="input-wrapper">
+                    <label class="form-label" for="company">Company</label>
+                    <input class="form-input" id="company" formControlName="company" placeholder="Facebook"
+                           [class.has-error]="experienceForm.get('company').invalid && experienceForm.get('company').touched"/>
+                    <div *ngIf="experienceForm.get('company').errors?.required && isTouchedOrDirty(experienceForm.get('company'))"
+                         class="form-error-msg">{{requiredLabel}}</div>
+                </section>
+                <section class="input-wrapper">
+                    <label class="form-label" for="period">Period</label>
+                    <input class="form-input" id="period" formControlName="period" placeholder="1997-1998"
+                           [class.has-error]="experienceForm.get('period').invalid && experienceForm.get('period').touched"/>
+                    <div *ngIf="experienceForm.get('period').errors?.required && isTouchedOrDirty(experienceForm.get('period'))"
+                         class="form-error-msg">{{requiredLabel}}</div>
+                    <div *ngIf="experienceForm.get('period').errors?.forbiddenPeriod && isTouchedOrDirty(experienceForm.get('period'))"
+                         class="form-error-msg">{{incorrectLabel}}</div>
+                </section>
+                <section class="input-wrapper">
+                    <label class="form-label" for="position">Position</label>
+                    <input class="form-input" id="position" formControlName="position" placeholder="UX Designer"
+                           [class.has-error]="experienceForm.get('position').invalid && experienceForm.get('position').touched"/>
+                    <div *ngIf="experienceForm.get('position').errors?.required && isTouchedOrDirty(experienceForm.get('position'))"
+                         class="form-error-msg">{{requiredLabel}}</div>
+                </section>
+                <section class="input-wrapper">
+                    <label class="form-label" for="exp-description">Description</label>
+                    <textarea class="text-area" id="exp-description" formControlName="description"
+                              placeholder="Experience"
+                              [class.has-error]="experienceForm.get('description').invalid && experienceForm.get('description').touched">
+                    </textarea>
+                    <div *ngIf="experienceForm.get('description').errors?.required && isTouchedOrDirty(experienceForm.get('description'))"
+                         class="form-error-msg">{{requiredLabel}}</div>
+                </section>
+            </div>
+            <button class="add-btn" [disabled]="form.get('experience').invalid" (click)="handleAddExperience()">Add
+            </button>
+        </div>
+    </section>
+
+    <section class="edit-form-section" formArrayName="skills">
+        <div class="header-wrapper">
+            <h3>Skills</h3>
+            <div class="form-error-msg" *ngIf="skills.invalid && skills.touched">{{blockValidationLabel}}</div>
+        </div>
+        <div class="form-block">
+            <div class="inner-form" *ngFor="let skillForm of skills.controls; let i = index" [formGroupName]="i">
+                <button class="delete-btn" (click)="handleDeleteItem('skills', i)">Delete</button>
+                <section class="input-wrapper">
+                    <label class="form-label" for="skill">Skill</label>
+                    <input class="form-input" id="skill" formControlName="skill" placeholder="Java"
+                           [class.has-error]="skillForm.get('skill').invalid && skillForm.get('skill').touched"/>
+                    <div *ngIf="skillForm.get('skill').errors?.required && isTouchedOrDirty(skillForm.get('skill'))"
+                         class="form-error-msg">{{requiredLabel}}</div>
+                </section>
+                <section class="input-wrapper">
+                    <label class="form-label" for="level">Level</label>
+                    <select class="form-input" id="level" formControlName="level">
+                        <option value="" disabled selected>Choose your level</option>
+                        <option *ngFor="let level of skillLevels" value="{{level.range}}">{{level.name}}</option>
+                    </select>
+                    <div *ngIf="skillForm.get('level').errors?.required && skillForm.get('level').touched"
+                         class="form-error-msg">{{requiredLabel}}</div>
+                </section>
+            </div>
+            <button class="add-btn" [disabled]="form.get('skills').invalid" (click)="handleAddSkill()">Add</button>
+        </div>
+    </section>
+
+    <section class="edit-form-section" formArrayName="contacts">
+        <div class="header-wrapper">
+            <h3>Contacts</h3>
+            <div *ngIf="contacts.invalid && contacts.touched" class="form-error-msg">{{blockValidationLabel}}</div>
+        </div>
+        <div class="form-block">
+            <div class="inner-form" *ngFor="let contactsForm of contacts.controls; let i = index" [formGroupName]="i">
+                <button class="delete-btn" (click)="handleDeleteItem('contacts', i)">Delete</button>
+                <section class="input-wrapper">
+                    <label class="form-label" for="icon-name">Icon name</label>
+                    <input class="form-input" id="icon-name" formControlName="iconName" placeholder="phone"
+                           [class.has-error]="contactsForm.get('iconName').invalid && contactsForm.get('iconName').touched"/>
+                    <div *ngIf="contactsForm.get('iconName').errors?.required && isTouchedOrDirty(contactsForm.get('iconName'))"
+                         class="form-error-msg">{{requiredLabel}}</div>
+                </section>
+                <section class="input-wrapper">
+                    <label class="form-label" for="cont-title">Title (optl)</label>
+                    <input class="form-input" id="cont-title" formControlName="title" placeholder="Twitter"/>
+                </section>
+                <section class="input-wrapper">
+                    <label class="form-label" for="cont-value">Value</label>
+                    <input class="form-input" id="cont-value" formControlName="value" placeholder="@someAcc"
+                           [class.has-error]="contactsForm.get('value').invalid && contactsForm.get('value').touched"/>
+                    <div *ngIf="contactsForm.get('value').errors?.required && isTouchedOrDirty(contactsForm.get('value'))"
+                         class="form-error-msg">{{requiredLabel}}</div>
+                </section>
+                <section class="input-wrapper">
+                    <label class="form-label" for="link">Link</label>
+                    <input class="form-input" id="link" type="checkbox" formControlName="link"/>
+                </section>
+            </div>
+
+            <button class="add-btn" [disabled]="form.get('contacts').invalid" (click)="handleAddContact()">Add</button>
+        </div>
+    </section>
+
+    <section class="edit-form-section" formArrayName="feedbacks">
+        <div class="header-wrapper">
+            <h3>Manual feedback</h3>
+            <div *ngIf="feedbacks.invalid && feedbacks.touched" class="form-error-msg">{{blockValidationLabel}}</div>
+        </div>
+        <div class="form-block">
+            <div class="inner-form" *ngFor="let feedbacksForm of feedbacks.controls; let i = index" [formGroupName]="i">
+                <button class="delete-btn" (click)="handleDeleteItem('feedbacks', i)">Delete</button>
+                <section class="input-wrapper">
+                    <label class="form-label" for="fullname">Full name</label>
+                    <input class="form-input" id="fullname" formControlName="fullName" placeholder="Martin Freeman"
+                           [class.has-error]="feedbacksForm.get('fullName').invalid && feedbacksForm.get('fullName').touched"/>
+                    <div *ngIf="feedbacksForm.get('fullName').errors?.required && isTouchedOrDirty(feedbacksForm.get('fullName'))"
+                         class="form-error-msg">{{requiredLabel}}</div>
+                </section>
+                <section class="input-wrapper">
+                    <label class="form-label" for="role">Role</label>
+                    <input class="form-input" id="role" formControlName="role" placeholder="Programmer"
+                           [class.has-error]="feedbacksForm.get('role').invalid && feedbacksForm.get('role').touched"/>
+                    <div *ngIf="feedbacksForm.get('role').errors?.required && isTouchedOrDirty(feedbacksForm.get('role'))"
+                         class="form-error-msg">{{requiredLabel}}</div>
+                </section>
+                <section class="input-wrapper">
+                    <label class="form-label" for="feedback-link">Link (optl)</label>
+                    <input class="form-input" id="feedback-link" formControlName="link"
+                           placeholder="somesite.com"/>
+                </section>
+                <section class="input-wrapper">
+                    <label class="form-label" for="feedback-text">Text</label>
+                    <textarea class="text-area" id="feedback-text" formControlName="text" placeholder="Your feedback"
+                              [class.has-error]="feedbacksForm.get('text').invalid && feedbacksForm.get('text').touched">
+                    </textarea>
+                    <div *ngIf="feedbacksForm.get('text').errors?.required && isTouchedOrDirty(feedbacksForm.get('text'))"
+                         class="form-error-msg">{{requiredLabel}}</div>
+                </section>
+            </div>
+            <button class="add-btn" [disabled]="feedbacks.invalid" (click)="handleAddFeedback()">Add</button>
+        </div>
+    </section>
+
+    <section class="form-footer">
+        <button (click)="handleReset()">Reset</button>
+        <button type="submit" [disabled]="form.invalid || form.pristine">Save</button>
+    </section>
 </form>
+<ng-template #progressBar>
+    <mat-progress-bar class="progress-bar" mode="indeterminate"></mat-progress-bar>
+</ng-template>

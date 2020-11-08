@@ -1,14 +1,14 @@
 export class Contact {
   id: number;
-  iconUrl: string;
+  iconName: string;
   iconAlt: string;
   value: string;
   href: string;
   title?: string;
 
-  constructor(id: number, iconUrl: string, iconAlt: string, value: string, href: string, title?: string) {
+  constructor(id: number, iconName: string, iconAlt: string, value: string, href: string, title?: string) {
     this.id = id;
-    this.iconUrl = iconUrl;
+    this.iconName = iconName;
     this.iconAlt = iconAlt;
     this.value = value;
     this.href = href;

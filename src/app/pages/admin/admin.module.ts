@@ -5,6 +5,7 @@ import {AdminComponent} from './admin.component';
 import {AdminRoutingModule} from './admin.routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {MatButtonModule} from '@angular/material/button';
         AdminRoutingModule,
         FormsModule,
         MatButtonModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatProgressBarModule
     ]
 })
 export class AdminModule {

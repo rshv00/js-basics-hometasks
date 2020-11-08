@@ -1,13 +1,13 @@
 export class EducationItem {
   id: number;
-  period: string;
-  details: string;
+  year: string;
+  description: string;
 
 
   constructor(id: number, year: string, details: string) {
     this.id = id;
-    this.period = year;
-    this.details = details;
+    this.year = year;
+    this.description = details;
   }
 
 }

@@ -1,17 +1,18 @@
 export class PersonData {
-    firstName: string;
-    lastName: string;
+    name: string;
     company: string;
     jobPosition: string;
     photoUrl: string;
     websiteUrl: string;
+    frontBackgroundPicUrl?: string;
 
-    constructor(firstName: string, lastName: string, company: string, jobPosition: string, photoUrl: string, personalSiteUrl: string) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    constructor(name: string, company: string, jobPosition: string, photoUrl: string, personalSiteUrl: string,
+                frontBackgroundPicUrl: string) {
+        this.name = name;
         this.company = company;
         this.jobPosition = jobPosition;
         this.photoUrl = photoUrl;
         this.websiteUrl = personalSiteUrl;
+        this.frontBackgroundPicUrl = frontBackgroundPicUrl;
     }
 }

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
+import {environment} from '../../../../environments/environment';
 
-const credentials = {login: 'admin', password: 'password'};
+const credentials = {login: environment.adminLogin, password: environment.adminPassword };
 
 @Injectable({
     providedIn: 'root'

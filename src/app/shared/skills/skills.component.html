@@ -1,12 +1,13 @@
 <section id="skills">
     <h2 class="section-header">
         Skills
-        <button mat-stroked-button class="edit-btn">Open edit</button>
+        <button mat-stroked-button class="edit-btn" (click)="switchMode()">Edit</button>
     </h2>
+    <app-skills-form class="edit-form" *ngIf="editMode$ | async" (skillAdded)="onAddSkill($event)"></app-skills-form>
     <ul class="skills-list">
-        <li class="skill" *ngFor="let skill of skills">
-            <div class="skill-level" [ngStyle]="{'max-width': 10 * skill.skillRange + '%'}">
-                <span class="skill-name">{{skill.skillName}}</span>
+        <li class="skill" *ngFor="let skill of skills$ | async">
+            <div class="skill-level" [ngStyle]="{'max-width': 10 * skill.level + '%'}">
+                <span class="skill-name">{{skill.technology}}</span>
             </div>
         </li>
     </ul>

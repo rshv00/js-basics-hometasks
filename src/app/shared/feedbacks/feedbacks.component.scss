@@ -1,6 +1,6 @@
 @import '../../../variables';
 
-.section-header {
+.toolbar-header {
   margin: 16px auto;
 }
 
@@ -10,7 +10,7 @@
 
 .feedback-item {
   position: relative;
-  margin: 0 20px 50px;
+  margin-bottom: 50px;
 }
 
 .content .feedback-item:first-of-type {

@@ -13,12 +13,10 @@ export class SideNavComponent implements OnInit {
     @Input()
     activeNavItem: number;
     @Input()
-    imageUrl: string;
+    photoUrl: string;
     navigationItems = this.contentService.navigationItems;
     @Output()
     navLink = new EventEmitter<NavigationItem>();
-    @Input()
-    name: string;
 
     constructor(private contentService: ContentService) {
     }
