@@ -1,0 +1,73 @@
+$label-indent: 100px;
+$border-radius: 2px;
+$error-color: red;
+
+.edit-form {
+  width: 500px;
+  max-width: 95%;
+  margin: 10px auto;
+}
+
+.edit-form-section {
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.header-wrapper {
+  width: 25%;
+  height: 100%;
+}
+
+.header-wrapper > h3,
+.header-wrapper > label {
+  height: 100%;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.form-block {
+  display: inline-block;
+  width: 75%;
+}
+
+.inner-form {
+  border: 1px solid gray;
+}
+
+.delete-btn {
+  float: right;
+}
+
+.add-btn {
+  margin-top: 5px;
+}
+
+.form-label {
+  padding-left: 5px;
+  display: inline-block;
+  width: $label-indent;
+}
+
+.text-area {
+  display: block;
+  width: 90%;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.form-footer > button {
+  margin: 0 5px;
+}
+
+.input-wrapper {
+  margin: 5px 0;
+}
+
+.has-error {
+  border-color: $error-color;
+}
+
+.form-error-msg {
+  font-size: 10px;
+  color: $error-color;
+}

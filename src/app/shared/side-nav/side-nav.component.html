@@ -1,28 +1,19 @@
-<mat-drawer-container class="mat-drawer-container" autosize>
-  <mat-drawer #drawer class="mat-drawer-navigation" opened mode="side">
-    <app-avatar class="user-brief-info" [imageUrl]="imageUrl">{{name}}</app-avatar>
-    <nav class="navbar">
-      <ul class="navbar-list">
-        <li *ngFor="let navItem of navItems" class="nav-list-item">
-          <a class="nav-link"
-             [href]="navItem.href"
-             [ngClass]="{'active': navItem.id === activeNavItem}"
-             (click)="onClick(navItem.id)">
-            <img class="nav-icon" [src]="navItem.icon" [alt]="navItem.alt">
-            <p class="nav-item-text">{{navItem.text}}</p>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <div class="go-back-elem">
-      <a class="go-back-link" routerLink='/'>
-        <span id="back-arrow">< Go back</span>
-      </a>
+<nav class="navbar">
+    <div>
+        <ng-content></ng-content>
+        <ul class="navbar-list">
+            <li *ngFor="let navigationItem of navigationItems" class="nav-list-item">
+                <a class="nav-link"
+                   [ngClass]="{'active': navigationItem.id === activeNavItem}"
+                   (click)="onClick(navigationItem)">
+                    <img class="nav-icon" [src]="navigationItem.icon" [alt]="navigationItem.alt">
+                    <p class="nav-item-text">{{navigationItem.text}}</p>
+                </a>
+            </li>
+        </ul>
     </div>
-  </mat-drawer>
+    <a class="go-back-link" routerLink='/'>
+        <span>&#60; Go back</span>
+    </a>
+</nav>
 
-  <div class="burger-menu">
-    <button class="burger-menu__btn" mat-button *ngIf="mobile" (click)="drawer.toggle()"></button>
-  </div>
-
-</mat-drawer-container>

@@ -1,10 +1,10 @@
-  <div class="bg"></div>
-  <div class="content">
+<div class="bg" [ngStyle]="{'backgroundImage': 'url(' + portfolioUserData?.frontBackgroundPicUrl + ')'}"></div>
+<div class="content">
     <div class="center-block">
-      <app-avatar [imageUrl]="profilePhotoSrc">{{name}}</app-avatar>
-      <span class="bio">Programmer. Creative. Innovator</span>
-      <span class="detail-info">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        <app-avatar [personData]="portfolioUserData"></app-avatar>
+        <span class="bio">Programmer. Creative. Innovator</span>
+        <span class="detail-info">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
             Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</span>
-      <a class="know-more" routerLink="/home">Know more</a>
+        <a class="know-more" routerLink="/home">Know more</a>
     </div>
-  </div>
+</div>

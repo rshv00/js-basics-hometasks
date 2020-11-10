@@ -1,1 +1,38 @@
-<p>admin-auth works!</p>
+<form class="login-form" #f="ngForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <section class="form-control-wrapper">
+        <label for="login" class="form-label">Login</label>
+        <input class="form-input"
+               placeholder="example@test.com"
+               name="login"
+               id="login"
+               type="text"
+               [class.has-error]="login.invalid && login.touched"
+               #login="ngModel"
+               [(ngModel)]="authentication.login"
+               required pattern="^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{0,19}$">
+        <div class="validation-error-msg" *ngIf="login.errors?.required && touchedOrDirty(login)">* enter</div>
+        <div class="validation-error-msg" *ngIf="login.errors?.pattern && touchedOrDirty(login)">* incorrect</div>
+    </section>
+    <section class="form-control-wrapper">
+        <label class="form-label" for="password">Password</label>
+        <input class="form-input"
+               placeholder="qwerty"
+               name="password"
+               id="password"
+               type="password"
+               [class.has-error]="password.invalid && password.touched"
+               #password="ngModel"
+               [(ngModel)]="authentication.password"
+               required pattern="^[a-zA-Z0-9]+$" minlength="6">
+        <div class="validation-error-msg" *ngIf="password.errors?.required && touchedOrDirty(password)">* enter</div>
+        <div *ngIf="(password.errors?.pattern || password.errors?.minlength) && touchedOrDirty(password)"
+             class="validation-error-msg">* incorrect
+        </div>
+        <div class="validation-error-msg" *ngIf="loginFail">Bad credentials!</div>
+    </section>
+    <section class="form-control-wrapper text-align-center">
+        <button type="submit"
+                [disabled]="f.invalid">Login
+        </button>
+    </section>
+</form>

@@ -1,1 +1,22 @@
-<p>feedbacks works!</p>
+<section id="feedbacks">
+    <h2 class="section-header">Feedbacks</h2>
+    <ul class="section-content">
+        <li class="feedback-item" *ngFor="let feedback of feedbackList">
+            <p class="feedback-content">{{feedback.content}}</p>
+
+            <div class="feedback-author">
+                <div class="feedback-author-photo">
+                    <img [src]="feedback.feedbackAuthor.photoUrl" class="feedback-author-photo__img">
+                </div>
+                <div class="feedback-author-about">
+                    <span class="feedback-author-about__name">{{feedback.feedbackAuthor.name}}, </span>
+                    <span class="feedback-author-about__occupation">{{ feedback.feedbackAuthor.jobPosition}}
+                        at {{feedback.feedbackAuthor.company}}</span>
+                    <a class="feedback-author-about__website" [href]="feedback.feedbackAuthor.websiteUrl"
+                       target="_blank">{{cutLinkProtocol(feedback.feedbackAuthor.websiteUrl)}}</a>
+                </div>
+            </div>
+
+        </li>
+    </ul>
+</section>

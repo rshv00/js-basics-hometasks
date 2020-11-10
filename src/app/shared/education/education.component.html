@@ -1,18 +1,18 @@
 <section id="education">
-  <h2 class="timeline-title header">{{title}}</h2>
-  <div class="timeline-content">
-    <div class="timeline-item" *ngFor="let educationItem of educationItems; let i = index">
-      <div class="timeline-item-left">
-        <p class="timeline-item-left__year">{{educationItem.period}}</p>
-        <div class="timeline-item-left__vertical-line"
-             [ngClass]="{
+    <h2 class="timeline-title section-header">{{title}}</h2>
+    <div class="timeline-content">
+        <div class="timeline-item" *ngFor="let educationItem of educationItems; let i = index">
+            <div class="timeline-item-left">
+                <p class="timeline-item-left__year">{{educationItem.year}}</p>
+                <div class="timeline-item-left__vertical-line"
+                     [ngClass]="{
            'first': i === 0,
            'last': i === educationItems.length - 1
            }"></div>
-      </div>
-      <div class="timeline-item-right">
-        <p class="timeline-item-right__text">{{educationItem.details}}</p>
-      </div>
+            </div>
+            <div class="timeline-item-right">
+                <p class="timeline-item-right__text">{{educationItem.description}}</p>
+            </div>
+        </div>
     </div>
-  </div>
 </section>

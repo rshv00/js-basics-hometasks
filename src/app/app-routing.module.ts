@@ -1,22 +1,33 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {FrontPageComponent} from "./pages/front-page/front-page.component";
-import {HomeComponent} from "./pages/home/home.component";
+import {FrontPageComponent} from './pages/front-page/front-page.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: FrontPageComponent,
+    {
+        path: '',
+        component: FrontPageComponent,
 
-  }, {
-    path: 'home',
-    component: HomeComponent
-  }
+    }, {
+        path: 'home',
+        loadChildren: () =>
+            import('./pages/home/home.module').then(
+                (m) => m.HomeModule
+            )
+    }, {
+        path: 'admin',
+        loadChildren: () =>
+            import('./pages/admin/admin.module').then(
+                (m) => m.AdminModule
+            )
+    }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes, {
+        anchorScrolling: 'enabled',
+        scrollPositionRestoration: 'enabled'
+    })],
+    exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

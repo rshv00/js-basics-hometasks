@@ -1,0 +1,46 @@
+@import '../../../variables.scss';
+
+.toolbar-header {
+  margin: 16px auto;
+}
+
+.contacts-content {
+  margin-left: 10px;
+}
+
+.contacts-item {
+  display: flex;
+}
+
+.contact-icon-wrapper {
+  padding: 20px;
+  border-right: $border;
+  border-bottom: $border;
+}
+
+.contact-icon-wrapper-last {
+  border-bottom: none;
+}
+
+.contact-icon {
+  width: 32px;
+}
+
+.contacts-item-content {
+  margin-left: 15px;
+  display: block;
+  align-self: center;
+}
+
+.contacts-item-heading {
+  display: block;
+  color: $text-color;
+  font-weight: bolder;
+  margin: 0;
+}
+
+.contacts-item-description {
+  margin: 0;
+  font-size: 14px;
+  color: grey;
+}

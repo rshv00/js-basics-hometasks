@@ -1,9 +1,11 @@
+@import '../../../variables';
 $avatar-size: 125px;
 :host {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 15px;
 }
 .profile-photo {
   background: no-repeat center;
@@ -17,6 +19,6 @@ $avatar-size: 125px;
 
 .name {
   font-size: 1.7em;
-  color: #FFFFFF;
+  color: $text-color;
   font-weight: 700;
 }

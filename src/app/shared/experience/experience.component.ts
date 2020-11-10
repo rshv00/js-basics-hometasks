@@ -1,19 +1,20 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ExperienceItem} from "../../models/ExperienceItem";
-import {ContentService} from "../../core/content.service";
+import {ExperienceItem} from '../../models/ExperienceItem';
 
 @Component({
-  selector: 'app-experience',
-  templateUrl: './experience.component.html',
-  styleUrls: ['./experience.component.scss']
+    selector: 'app-experience',
+    templateUrl: './experience.component.html',
+    styleUrls: ['./experience.component.scss']
 })
 export class ExperienceComponent implements OnInit {
-  header = 'Experience';
-  experienceItems = this.contentService.experienceItems;
+    readonly HEADER = 'Experience';
+    @Input()
+    experienceList: Array<ExperienceItem>;
 
-  constructor(private contentService: ContentService) { }
+    constructor() {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
 }

@@ -1,4 +1,4 @@
-<img class="profile-photo" src="{{imageUrl}}" alt="Profile photo">
+<img class="profile-photo" [src]="personData?.photoUrl">
 <span class="name">
-  <ng-content></ng-content>
+  {{personData?.name}}
 </span>
